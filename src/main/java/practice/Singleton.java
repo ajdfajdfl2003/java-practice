@@ -1,5 +1,9 @@
 package practice;
 
+/**
+ * Practice from http://dongchuan.github.io/java/2015/10/07/Java-Static-Loading-Order.html
+ */
+
 public class Singleton {
 
     static class Inner {
