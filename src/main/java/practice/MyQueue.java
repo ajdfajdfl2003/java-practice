@@ -5,10 +5,10 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.Queue;
 
-public class MyCircularFifoQueue {
+public class MyQueue {
     private Queue queue;
 
-    public MyCircularFifoQueue(Queue queue) {
+    public MyQueue(Queue queue) {
         this.queue = queue;
     }
 

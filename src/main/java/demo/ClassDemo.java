@@ -1,3 +1,5 @@
+package demo;
+
 public class ClassDemo {
     public static void main(String[] args) {
         String name = "caterpillar";

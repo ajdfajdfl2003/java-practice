@@ -1,3 +1,5 @@
+package demo;
+
 import practice.Singleton;
 
 public class SingletonDemo {

@@ -1,3 +1,5 @@
+package demo;
+
 import practice.TestLoadClass;
 
 public class LoadClass {
