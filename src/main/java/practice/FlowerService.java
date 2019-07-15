@@ -8,6 +8,7 @@ class FlowerService {
     }
 
     void run() {
-        this.farmer.doSomething();
+        Student student = new Student("angus", 123);
+        this.farmer.doSomething(student);
     }
 }

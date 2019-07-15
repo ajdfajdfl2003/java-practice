@@ -6,6 +6,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import static org.mockito.Matchers.argThat;
+
 @RunWith(PowerMockRunner.class)
 public class FlowerServiceTest {
 
@@ -17,7 +19,8 @@ public class FlowerServiceTest {
         FlowerService service = new FlowerService(farmer);
         service.run();
 
+        Student student = new Student("angus", 123);
         Mockito.verify(farmer, Mockito.times(1))
-                .doSomething();
+                .doSomething(argThat(new StudentMatcher(student)));
     }
 }

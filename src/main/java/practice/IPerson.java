@@ -1,5 +1,5 @@
 package practice;
 
 public interface IPerson {
-    void doSomething();
+    void doSomething(Student student);
 }
