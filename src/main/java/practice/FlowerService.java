@@ -1,5 +1,7 @@
 package practice;
 
+import vo.Student;
+
 class FlowerService {
     private final IPerson farmer;
 

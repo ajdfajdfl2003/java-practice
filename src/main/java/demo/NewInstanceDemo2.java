@@ -1,6 +1,6 @@
 package demo;
 
-import practice.Student;
+import vo.Student;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -8,7 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 public class NewInstanceDemo2 {
     public static void main(String[] args) {
         try {
-            Class c = Class.forName("practice.Student");
+            Class c = Class.forName("vo.Student");
 
             Class[] params = new Class[2];
             // 第一個參數是String

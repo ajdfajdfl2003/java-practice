@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 public class InvokeMethodDemo {
     public static void main(String[] args) {
         try {
-            Class c = Class.forName("practice.Student");
+            Class c = Class.forName("vo.Student");
             // 使用無參數建構方法建立物件
             Object targetObj = c.newInstance();
             // 設定參數型態

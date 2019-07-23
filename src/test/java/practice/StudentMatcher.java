@@ -1,6 +1,7 @@
 package practice;
 
 import org.mockito.ArgumentMatcher;
+import vo.Student;
 
 class StudentMatcher extends ArgumentMatcher<Student> {
     private Student expected;
