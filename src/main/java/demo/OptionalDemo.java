@@ -16,7 +16,7 @@ public class OptionalDemo {
 
     private static void UseIsPresent() {
         UserService service = new UserService();
-        Optional<User> user = service.getUserById(123);
+        Optional<User> user = service.getUserById(2018);
         if (user.isPresent()) {
             String username = user.get().getUserName();
             System.out.println("Username is: " + username);
@@ -25,7 +25,7 @@ public class OptionalDemo {
 
     private static void UseIfCondition() {
         UserService service = new UserService();
-        User user = service.getUserById("aaa");
+        User user = service.getUserByName("Angus");
         if (user != null) {
             String username = user.getUserName();
             System.out.println("Username is: " + username);
