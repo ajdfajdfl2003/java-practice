@@ -16,6 +16,13 @@ public class OptionalDemo {
         UseIfCondition();
         UseIsPresent();
         UseIfPresent();
+        UseOrElse();
+    }
+
+    private static void UseOrElse() {
+        User user = Optional.ofNullable(service.getUserById(2017))
+                .orElse(new User(99999, "Unknown"));
+        System.out.println(String.format("Username is: %s", user.getUserName()));
     }
 
     private static void UseIfPresent() {
