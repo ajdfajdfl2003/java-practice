@@ -5,7 +5,6 @@ import vo.User;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Optional;
 
 public class UserService {
     private Map<Integer, User> userCache = new HashMap<>();
@@ -16,14 +15,11 @@ public class UserService {
     }
 
     private User generateUser(int userId, String userName) {
-        User user = new User();
-        user.setUserId(userId);
-        user.setUserName(userName);
-        return user;
+        return new User(userId, userName);
     }
 
-    public Optional<User> getUserById(int userId) {
-        return Optional.ofNullable(userCache.get(userId));
+    public User getUserById(int userId) {
+        return userCache.get(userId);
     }
 
     public User getUserByName(String userName) {

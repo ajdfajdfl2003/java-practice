@@ -15,16 +15,16 @@ public class OptionalDemo {
         service = new UserService();
         UseIfCondition();
         UseIsPresent();
-        UserIfPresent();
+        UseIfPresent();
     }
 
-    private static void UserIfPresent() {
-        Optional<User> user = service.getUserById(2018);
+    private static void UseIfPresent() {
+        Optional<User> user = Optional.ofNullable(service.getUserById(2018));
         user.ifPresent(u -> System.out.println(String.format("Username is: %s", u.getUserName())));
     }
 
     private static void UseIsPresent() {
-        Optional<User> user = service.getUserById(2018);
+        Optional<User> user = Optional.ofNullable(service.getUserById(2018));
         if (user.isPresent()) {
             String username = user.get().getUserName();
             System.out.println(String.format("Username is: %s", username));
