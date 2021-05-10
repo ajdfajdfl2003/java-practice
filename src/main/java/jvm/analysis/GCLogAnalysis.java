@@ -5,6 +5,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAdder;
 
 public class GCLogAnalysis {
+    /**
+     * 讓程式在跑的過程中能輸出 GC 的相關 log
+     * $ java -XX:+PrintGCDetails GCLogAnalysis
+     * or
+     * $ java -XX:+PrintGCDetails jvm/analysis/GCLogAnalysis.java
+     **/
     private static Random random = new Random();
 
     public static void main(String[] args) {
