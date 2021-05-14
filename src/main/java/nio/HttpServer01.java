@@ -6,6 +6,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class HttpServer01 {
+    /**
+     * 單一線程處理進來的 request，沒效率
+     */
     public static void main(String[] args) throws IOException {
         ServerSocket socket = new ServerSocket(8801);
         while (true) {
