@@ -49,17 +49,9 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
     private void handlerTest(FullHttpRequest fullRequest, ChannelHandlerContext ctx, String body) {
         FullHttpResponse response = null;
         try {
-            // 对接上次作业的httpclient或者okhttp请求另一个url的响应数据
-            String value = body;
-
-//            httpGet ...  http://localhost:8801
-//            返回的响应，"hello,nio";
-//            value = reponse....
-
-            response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(value.getBytes("UTF-8")));
+            response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(body.getBytes("UTF-8")));
             response.headers().set("Content-Type", "application/json");
             response.headers().setInt("Content-Length", response.content().readableBytes());
-
         } catch (Exception e) {
             System.out.println("处理出错:" + e.getMessage());
             response = new DefaultFullHttpResponse(HTTP_1_1, NO_CONTENT);
