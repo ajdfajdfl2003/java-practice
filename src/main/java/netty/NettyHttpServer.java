@@ -10,13 +10,10 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 
-
+@Log4j2
 public class NettyHttpServer {
-    private static final Logger log = LogManager.getLogger(NettyHttpServer.class);
-
     public static void main(String[] args) throws InterruptedException {
         int port = 8808;
 

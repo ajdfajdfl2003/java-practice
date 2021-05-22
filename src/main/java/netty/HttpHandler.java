@@ -9,6 +9,7 @@ import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpUtil;
 import io.netty.util.ReferenceCountUtil;
+import jdk.nashorn.internal.ir.debug.ClassHistogramElement;
 import lombok.extern.log4j.Log4j2;
 
 import java.time.Instant;
@@ -35,9 +36,9 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
             String uri = fullRequest.uri();
             log.info("接收到的请求url为{}", uri);
             if (uri.contains("/test")) {
-                handlerTest(fullRequest, ctx, "hello, angus");
+                handlerTest(fullRequest, ctx);
             } else {
-                handlerTest(fullRequest, ctx, "hello, default");
+                handlerTest(fullRequest, ctx);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,10 +47,11 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
-    private void handlerTest(FullHttpRequest fullRequest, ChannelHandlerContext ctx, String body) {
+    private void handlerTest(FullHttpRequest fullRequest, ChannelHandlerContext ctx) {
         FullHttpResponse response = null;
         try {
-            response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(body.getBytes("UTF-8")));
+            String responseFromOtherAPI = new MyHttpClient().get("http://localhost:8801");
+            response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(responseFromOtherAPI.getBytes("UTF-8")));
             response.headers().set("Content-Type", "application/json");
             response.headers().setInt("Content-Length", response.content().readableBytes());
         } catch (Exception e) {
