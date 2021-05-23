@@ -5,16 +5,13 @@ import java.util.concurrent.TimeUnit;
 public class ANewThread {
     public static void main(String[] args) throws InterruptedException {
         //first way:
-        final Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    TimeUnit.SECONDS.sleep(5L);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("Current thread: " + Thread.currentThread().getName());
+        final Runnable runnable = () -> {
+            try {
+                TimeUnit.SECONDS.sleep(5L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            System.out.println("Current thread: " + Thread.currentThread().getName());
         };
         final Thread thread = new Thread(runnable);
         thread.setName("test_thread_1");
