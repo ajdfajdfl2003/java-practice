@@ -3,7 +3,7 @@ package thread;
 import java.util.concurrent.TimeUnit;
 
 public class ANewThread {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //first way:
         final Runnable runnable = new Runnable() {
             @Override
@@ -18,10 +18,12 @@ public class ANewThread {
         };
         final Thread thread = new Thread(runnable);
         thread.setName("test_thread_1");
-        thread.setDaemon(false);
+        thread.setDaemon(true);
         thread.start();
 
         //second way:
-        new ExtendThread("test_thread_2", false).start();
+        new ExtendThread("test_thread_2", true).start();
+
+        TimeUnit.SECONDS.sleep(6);
     }
 }
