@@ -18,10 +18,10 @@ public class ANewThread {
         };
         final Thread thread = new Thread(runnable);
         thread.setName("test_thread_1");
-        thread.setDaemon(true);
+        thread.setDaemon(false);
         thread.start();
 
         //second way:
-        new ExtendThread("test_thread_2", true).start();
+        new ExtendThread("test_thread_2", false).start();
     }
 }
