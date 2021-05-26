@@ -10,10 +10,17 @@ public class LockCounterTest {
     public void testLockCounter() {
         System.out.println(Instant.now().toString());
         int loopNum = 1_000_000;
-        final LockCounter counter = new LockCounter();
+        final NonFairLockCounter nonFairCounter = new NonFairLockCounter();
         IntStream.range(0, loopNum).parallel()
-                .forEach(i -> counter.addAndGet());
-        System.out.println(counter.getSum());
+                .forEach(i -> nonFairCounter.addAndGet());
+        System.out.println(nonFairCounter.getSum());
+        System.out.println(Instant.now().toString());
+        System.out.println("=====================");
+        System.out.println(Instant.now().toString());
+        final FairLockCounter fairCounter = new FairLockCounter();
+        IntStream.range(0, loopNum).parallel()
+                .forEach(i -> fairCounter.addAndGet());
+        System.out.println(fairCounter.getSum());
         System.out.println(Instant.now().toString());
     }
 }
