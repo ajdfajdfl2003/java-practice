@@ -34,16 +34,22 @@ public class LockCounterTest {
         new Thread(() -> IntStream.range(0, loopNum).forEach(i ->
                 fairCounter.addAndGet())).start();
         new Thread(() -> IntStream.range(0, loopNum).forEach(i -> {
-            if (fairCounter.getSum() % 100000 == 99999) {
-                System.out.println("FairLockCounter:" + fairCounter.getSum());
+            // 沒有鎖，碰運氣去拿到想要的值
+            final int sum = fairCounter.getSum();
+            if (sum % 100000 == 99999) {
+                System.out.println("FairLockCounter:" + sum);
             }
         })).start();
+
         final FairReadWriteLockCounter fairReadWriteCounter = new FairReadWriteLockCounter();
         new Thread(() -> IntStream.range(0, loopNum).forEach(i ->
                 fairReadWriteCounter.addAndGet())).start();
         new Thread(() -> IntStream.range(0, loopNum).forEach(i -> {
-            if (fairReadWriteCounter.getSum() % 100000 == 99999) {
-                System.out.println("FairReadWriteLockCounter: " + fairReadWriteCounter.getSum());
+            // 只要我拿到讀鎖，我就能保證能拿到我想要的值是對的
+            // 也就是會先卡住寫，等我讀完以後，再放行給寫鎖做事
+            final int sum = fairReadWriteCounter.getSum();
+            if (sum % 100000 == 99999) {
+                System.out.println("FairReadWriteLockCounter: " + sum);
             }
         })).start();
         TimeUnit.SECONDS.sleep(10);
