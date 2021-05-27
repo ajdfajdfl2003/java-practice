@@ -6,7 +6,7 @@ import java.time.Instant;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
-public class LockCounterTest {
+public class FairNonFairLockCounterTest {
     private final int loopNum = 1_000_000;
 
     @Test
