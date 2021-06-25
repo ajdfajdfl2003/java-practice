@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ReentrantCounter {
     private final ReentrantLock lock = new ReentrantLock(false);
 
-    public void print() throws InterruptedException {
+    public void print() {
         try {
             lock.lock();
             inner();
