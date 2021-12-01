@@ -3,19 +3,28 @@ package thread.schedule;
 import java.time.Instant;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MySchedule {
     public static void main(String[] args) throws InterruptedException {
         final ScheduledThreadPoolExecutor poolExecutor =
                 new ScheduledThreadPoolExecutor(1);
+        AtomicInteger counter = new AtomicInteger(0);
         poolExecutor.schedule(() -> {
-            System.out.println("task 1 " + Instant.now().toEpochMilli());
-            sleep(5);
-        }, 5, TimeUnit.SECONDS);
+            try {
+                if (3 == counter.get()) {
+                    throw new Exception("test test test");
+                }
+                System.out.println("task 1 " + Instant.now().toEpochMilli());
+                sleep(2);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }, 0, TimeUnit.SECONDS);
 
-        poolExecutor.scheduleAtFixedRate(() -> {
-            System.out.println("task 3 " + Instant.now().toEpochMilli());
-        }, 0, 1, TimeUnit.SECONDS);
+//        poolExecutor.scheduleAtFixedRate(() -> {
+//            System.out.println("task 3 " + Instant.now().toEpochMilli());
+//        }, 0, 1, TimeUnit.SECONDS);
 
 //        poolExecutor.schedule(() -> {
 //            System.out.println("task 2");
