@@ -28,6 +28,7 @@ public class Module {
 
                 currentStage = newStage;
                 newStage.changed();
+                log.info(oldStage + " to " + newStage);
             } catch (Throwable e) {
                 log.error(e);
             }

@@ -6,6 +6,12 @@ import java.util.concurrent.TimeUnit;
 
 @Log4j2
 public class ProcessTask implements Runnable {
+    //public class ProcessTask extends Thread {
+//    @Override
+//    public synchronized void start() {
+//        super.start();
+//    }
+
     @Override
     public void run() {
         log.info("[BStage Process] start");

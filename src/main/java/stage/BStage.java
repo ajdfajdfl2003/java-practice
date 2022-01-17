@@ -17,6 +17,7 @@ public class BStage implements Stage {
         //預期這個會做很久，怕影響到 CStage change 裡在做的事情
         //所n以要等他做完才能繼續往下
         new ProcessTask().run();
+//        new ProcessTask().start();
     }
 
     @Override
