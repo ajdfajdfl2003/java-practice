@@ -5,6 +5,7 @@ import org.junit.Test;
 public class ComplicatedDemoTest {
     static Player player = new Player();
     static BettingClerk bettingClerk = new BettingClerk();
+    static Module module = new Module(player, bettingClerk);
 
     @Test
     public void null_pointer_exception() {
@@ -12,26 +13,12 @@ public class ComplicatedDemoTest {
         bettingClerk.receiveBet(1123L);
         System.out.println(player.getBetSequences());
         new Thread(() -> {
-            try {
-                player.getBetSequences().stream()
-                        .filter(seq -> bettingClerk.getBet(seq).isNotAutoCashOutBet())
-                        .forEach(ComplicatedDemoTest::cashOut);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            module.leave();
         }).start();
         new Thread(() -> {
-            try {
-                player.getBetSequences().stream()
-                        .filter(seq -> bettingClerk.getBet(seq).isNotAutoCashOutBet())
-                        .forEach(ComplicatedDemoTest::cashOut);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            module.leave();
         }).start();
-        player.getBetSequences().stream()
-                .filter(seq -> bettingClerk.getBet(seq).isNotAutoCashOutBet())
-                .forEach(ComplicatedDemoTest::cashOut);
+        module.leave();
     }
 
     static void cashOut(Long seq) {

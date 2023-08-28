@@ -19,5 +19,6 @@ public class BettingClerk {
     public void removeIfPresent(Long seq) {
         System.out.println("[removeIfPresent] thread: " + Thread.currentThread().getName() + ", time: " + Instant.now());
         playerBetBySeq.remove(seq);
+        System.out.println("[removeIfPresent] thread: " + Thread.currentThread().getName() + ", in bet: " + playerBetBySeq);
     }
 }

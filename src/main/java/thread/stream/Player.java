@@ -14,4 +14,8 @@ public class Player {
     public List<Long> getBetSequences() {
         return new ArrayList<>(seqOfPosition.values());
     }
+
+    public void refresh() {
+        seqOfPosition.clear();
+    }
 }
