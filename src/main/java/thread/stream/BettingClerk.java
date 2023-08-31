@@ -2,6 +2,7 @@ package thread.stream;
 
 import java.time.Instant;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class BettingClerk {
@@ -11,9 +12,9 @@ public class BettingClerk {
         playerBetBySeq.put(seq, new PlayerBet(new GameConfirmBet(seq)));
     }
 
-    public PlayerBet getBet(long seq) {
+    public Optional<PlayerBet> getBet(long seq) {
         System.out.println("[getBet] thread: " + Thread.currentThread().getName() + ", time: " + Instant.now());
-        return playerBetBySeq.get(seq);
+        return Optional.ofNullable(playerBetBySeq.get(seq));
     }
 
     public void removeIfPresent(Long seq) {
