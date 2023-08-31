@@ -12,7 +12,11 @@ public class Module {
     public synchronized void leave() {
         player.getBetSequences().stream()
                 .filter(seq -> bettingClerk.getBet(seq).isNotAutoCashOutBet())
-                .forEach(ComplicatedDemoTest::cashOut);
+                .forEach(this::cashOut);
         player.refresh();
+    }
+
+    public synchronized void cashOut(Long seq) {
+        bettingClerk.removeIfPresent(seq);
     }
 }

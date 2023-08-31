@@ -8,7 +8,7 @@ public class BettingClerk {
     private final Map<Long, PlayerBet> playerBetBySeq = new ConcurrentHashMap<>();
 
     public void receiveBet(long seq) {
-        playerBetBySeq.put(seq, new PlayerBet());
+        playerBetBySeq.put(seq, new PlayerBet(new GameConfirmBet(seq)));
     }
 
     public PlayerBet getBet(long seq) {
