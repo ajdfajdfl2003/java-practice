@@ -50,3 +50,4 @@ log4j-application.log*
 # classes in gs-ws/WEB-INF folder
 gs-ws/WEB-INF/classes/**/*.class
 #test Teacher kuma .jpg
+.claude
